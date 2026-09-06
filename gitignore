@@ -1,0 +1,11 @@
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+
+# Secrets — never commit your real API key
+backend/.env
+
+# OS junk
+.DS_Store
+Thumbs.db

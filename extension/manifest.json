@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "LookUp Bot",
+  "version": "0.1.0",
+  "description": "Select text, right-click, and get an AI-powered explanation — no chat, just answers.",
+  "permissions": ["contextMenus", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>", "http://localhost:8787/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
