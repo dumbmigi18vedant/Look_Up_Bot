@@ -15,18 +15,19 @@ This keeps it fast, cheap, and hard to abuse.
 5. Go to any webpage, select some text, right-click, click "Look up ..."
 
 ## How it works
-1.If you change you you to antropic or any different change
+1. A Chrome extension (`extension/`) adds a right-click menu item that
+   appears when you select text.
+2. Clicking it sends the selection to a small local backend (`backend/`).
+3. The backend searches the web (DuckDuckGo, API key needed) and asks
+   an LLM (Google Gemini, free tier) to explain the result in a few sentences.
+4. The answer — with source links — appears in a small overlay right on
+   the page.
+5. Use a google studio aistudio.google.com for an free api key or any API_KEY
+   like antropic or anything but my recommend is aistudio.google free API_KEY
+6. If you change you you to antropic or any different change
    MODEL = "gemini-3.6-flash" to you model and
    genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-2. A Chrome extension (`extension/`) adds a right-click menu item that
-   appears when you select text.
-3. Clicking it sends the selection to a small local backend (`backend/`).
-4. The backend searches the web (DuckDuckGo, API key needed) and asks
-   an LLM (Google Gemini, free tier) to explain the result in a few sentences.
-5. The answer — with source links — appears in a small overlay right on
-   the page.
-6. Use a google studio aistudio.google.com for an free api key or any API_KEY
-   like antropic or anything but my recommend is aistudio.google free API_KEY
+   
 ## Setup
 
 See `backend/README.md` and `extension/README.md` for step-by-step setup.
@@ -37,7 +38,7 @@ cd backend
 python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-export GEMINI_API_KEY=your-key-here   # Windows: $env:GEMINI_API_KEY="..."
+export MODELNAME_API_KEY=your-key-here   # Windows: $env:MODELNAME_API_KEY="..."
 uvicorn app:app --reload --port 8787
 ```
 
